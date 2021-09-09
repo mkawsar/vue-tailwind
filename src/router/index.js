@@ -6,8 +6,15 @@ Vue.use(Router)
 
 const router = createRouter();
 
+const DEFAULT_TITLE = 'Vue Tailwind';
+router.afterEach((to, from) => {
+    Vue.nextTick(() => {
+        document.title = to.meta.title || DEFAULT_TITLE;
+    });
+});
 
 export default router
+
 
 function createRouter() {
     const router = new Router({

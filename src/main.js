@@ -5,7 +5,7 @@ import App from './App.vue';
 import router from './router'
 import './assets/css/tailwind.css'
 
-Vue.config.productionTip = false
+Vue.config.productionTip = false;
 
 
 const app = new Vue({
