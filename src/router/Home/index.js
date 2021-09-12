@@ -1,5 +1,5 @@
-import DashboardLayout from "../../components/Views/layouts/DashboardLayout";
-import HelloWorld from "../../components/HelloWorld";
+import DashboardLayout from "@/components/Views/layouts/DashboardLayout";
+import HelloWorld from "@/components/HelloWorld";
 
 export default [
     {
@@ -11,7 +11,7 @@ export default [
                 path: 'hello/world',
                 name: 'HelloWorld',
                 component: HelloWorld,
-                meta: {title: 'My Plan List'}
+                meta: {title: 'My Plan List', requiresAuth: true}
             }
         ]
     }

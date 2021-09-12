@@ -5,7 +5,11 @@ import App from './App.vue';
 import router from './router'
 import './assets/css/tailwind.css'
 
+import localStorage from '@/services/localStorage';
+
 Vue.config.productionTip = false;
+
+Vue.prototype.$localStorage = localStorage;
 
 
 const app = new Vue({

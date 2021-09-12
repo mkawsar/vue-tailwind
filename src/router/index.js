@@ -13,6 +13,22 @@ router.afterEach((to, from) => {
     });
 });
 
+router.beforeEach((to, from, next) => {
+    if (to.matched.some(record => to.meta.requiresAuth)) {
+        const token = window.localStorage.getItem('token');
+        if (!token) {
+            next({
+                path: '/login',
+                query: {redirect: to.fullPath}
+            })
+        } else {
+            next();
+        }
+    } else {
+        next();
+    }
+})
+
 export default router
 
 
