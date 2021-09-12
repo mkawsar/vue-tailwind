@@ -21,7 +21,6 @@ Vue.prototype.$notification = notification;
 
 window.$ = window.jQuery = require('jquery');
 
-
 const app = new Vue({
     el: '#app',
     router: router,

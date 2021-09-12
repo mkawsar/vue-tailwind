@@ -31,7 +31,6 @@ router.beforeEach((to, from, next) => {
 
 export default router
 
-
 function createRouter() {
     const router = new Router({
         mode: 'history',

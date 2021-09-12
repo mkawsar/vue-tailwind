@@ -9,7 +9,7 @@ import swal from 'sweetalert2';
 window.NProgress = require('nprogress');
 
 window.axios.interceptors.request.use(function (config) {
-    config.headers['Authorization'] = 'Bearer ' + AppLocalStorage.get('token');
+    config.headers['Authorization'] = `Bearer ${AppLocalStorage.get('token')}`;
     return config;
 });
 

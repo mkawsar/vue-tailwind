@@ -1,19 +1,19 @@
 export default {
     notify($this, title, text) {
-        let template = '<span><b>'+title+'</b> - '+text+'</span>';
+        let template = '<span><b>' + title + '</b> - ' + text + '</span>';
         this.notifyText($this, 'top', 'right', template, 'ti-info-alt', 'success');
     },
 
     error($this, title, text) {
-        let template = '<span><b>'+title+'</b> - '+text+'</span>';
+        let template = '<span><b>' + title + '</b> - ' + text + '</span>';
         this.notifyText($this, 'top', 'right', template, 'ti-info-alt', 'danger');
     },
 
     notifyValidationErrors($this, notifications) {
-        if(typeof notifications === 'string'){
-            let template = '<span><b>'+title+'</b> - '+text+'</span>';
+        if (typeof notifications === 'string') {
+            let template = '<span><b>' + title + '</b> - ' + text + '</span>';
             this.notifyText($this, 'top', 'right', template, 'ti-info-alt', 'danger');
-        } else if(notifications.constructor === Array){
+        } else if (notifications.constructor === Array) {
             let template = '<ul style="list-style-type: disc">';
             for (let key in notifications) {
                 if (notifications.hasOwnProperty(key)) {
@@ -29,7 +29,7 @@ export default {
     notifyError($this, notifications) {
         if (notifications.hasOwnProperty('message')) {
             if (typeof notifications.message === 'string') {
-                let template = '<span><b>Oops!</b> - '+notifications.message+'</span>';
+                let template = '<span><b>Oops!</b> - ' + notifications.message + '</span>';
                 this.notifyText($this, 'top', 'right', template, 'ti-info-alt', 'danger');
             } else if (typeof notifications.message === 'object') {
                 let template = '<ul>';
