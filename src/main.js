@@ -5,8 +5,9 @@ import router from '@/router'
 import '@/assets/css/tailwind.css'
 import VueNotify from 'vue-notifyjs';
 
-import localStorage from '@/services/localStorage';
-import notification from '@/services/notification';
+import localStorageService from '@/services/localStorage';
+import notificationService from '@/services/notification';
+import authService from '@/services/auth';
 
 Vue.config.productionTip = false;
 
@@ -16,8 +17,9 @@ Vue.use(VueNotify);
 
 Vue.prototype.$lodash = _;
 
-Vue.prototype.$localStorage = localStorage;
-Vue.prototype.$notification = notification;
+Vue.prototype.$auth = authService;
+Vue.prototype.$notification = notificationService;
+Vue.prototype.$localStorage = localStorageService;
 
 window.$ = window.jQuery = require('jquery');
 

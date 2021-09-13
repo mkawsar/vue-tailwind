@@ -4,8 +4,7 @@
         <main class="main flex flex-col flex-grow -ml-64 md:ml-0 transition-all duration-150 ease-in">
             <top-layout></top-layout>
             <div class="main-content flex flex-col flex-grow p-4">
-                <h1 class="font-bold text-2xl text-gray-700">Dashboard</h1>
-
+                <h1 class="font-bold text-2xl text-gray-700">{{this.$route.meta.title || 'Test'}}</h1>
                 <dashboard-content>
 
                 </dashboard-content>

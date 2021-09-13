@@ -11,7 +11,7 @@ export default [
                 path: 'hello/world',
                 name: 'HelloWorld',
                 component: HelloWorld,
-                meta: {title: 'My Plan List', requiresAuth: true}
+                meta: {title: 'My Plan List', requiresAuth: false}
             }
         ]
     }
