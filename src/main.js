@@ -9,6 +9,8 @@ import localStorageService from '@/services/localStorage';
 import notificationService from '@/services/notification';
 import authService from '@/services/auth';
 
+import env from './env';
+
 Vue.config.productionTip = false;
 
 require('@/bootstrap');
@@ -16,6 +18,8 @@ require('@/bootstrap');
 Vue.use(VueNotify);
 
 Vue.prototype.$lodash = _;
+
+Vue.prototype.$env = env;
 
 Vue.prototype.$auth = authService;
 Vue.prototype.$notification = notificationService;

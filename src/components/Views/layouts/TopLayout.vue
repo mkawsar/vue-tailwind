@@ -51,7 +51,7 @@
                         class="h-10 w-10 bg-gray-200 border rounded-full"
                     />
                     <span class="flex flex-col ml-2">
-                <span class="truncate w-20 font-semibold tracking-wide leading-none">John Doe</span>
+                <span class="truncate w-20 font-semibold tracking-wide leading-none">{{name}}</span>
                 <span class="truncate w-20 text-gray-500 text-xs leading-none mt-1">Manager</span>
               </span>
                 </a>
@@ -62,6 +62,27 @@
 
 <script>
 export default {
-    name: "TopLayout"
+    name: "TopLayout",
+    data() {
+        return {
+            name: '',
+            picture: '',
+            designation: ''
+        }
+    },
+
+    methods: {
+        handleGetUserProfile() {
+            let profile = this.$localStorage.get('user');
+            this.name = profile.name;
+            this.picture = profile.picture
+            let roles = this.$localStorage.get('roles');
+            console.log(roles);
+        }
+    },
+
+    mounted() {
+        this.handleGetUserProfile();
+    }
 }
 </script>

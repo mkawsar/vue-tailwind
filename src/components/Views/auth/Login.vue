@@ -36,8 +36,10 @@
                         </div>
                         <div class="">
                             <button
-                                class="mt-4 mb-3 w-full bg-gray-700 hover:bg-gray-600 text-white py-2 rounded-md transition duration-100">
-                                Login now
+                                :disabled="loading"
+                                class="mt-4 mb-3 w-full bg-gray-700 hover:bg-gray-600 text-white py-2 rounded-md transition duration-100"
+                                :class="loading === true ? 'cursor-not-allowed' : ''">
+                                Login now <i class="fa fa-spinner fa-spin" v-if="loading"></i>
                             </button>
                         </div>
                     </form>
@@ -92,16 +94,50 @@ export default {
                     required: true,
                     min: 6
                 }
-            }
+            },
+            loading: false
         }
     },
     methods: {
         handleSubmitLoginForm() {
+            this.loading = true;
             this.$validator.validateAll().then((result) => {
                 if (result) {
-                    console.log('test')
+                    let data = new FormData();
+                    data.append('email', this.user.email);
+                    data.append('password', this.user.password);
+
+                    axios.post(this.$env.BACKEND_API + 'employer/login', data)
+                    .then(response => {
+                        this.loading = false;
+                        Object.keys(response.data.response).forEach((key) => {
+                            // this.$localStorage.set(key, response.data.response[key]);
+                            if (key === 'user') {
+                                let userRoles = [];
+                                let roles = response.data.response[key].role.name;
+                                userRoles.push(roles);
+                                let userObj = {};
+                                userObj.name = response.data.response.user.name;
+                                userObj.picture = response.data.response.user.profile_picture;
+                                this.$localStorage.set('user', JSON.stringify(userObj));
+                                this.$localStorage.set('roles', userRoles);
+                            }
+
+                            if (key === 'token') {
+                                this.$localStorage.set(key, response.data.response[key]);
+                            }
+                        });
+                        this.handleRedirect();
+                    })
+                    .catch(err => {
+                        this.loading = false;
+                        this.$notification.notifyError(this, err.response.data);
+                    })
                 }
             })
+        },
+        handleRedirect() {
+            this.$router.push('/hello/world')
         }
     }
 }

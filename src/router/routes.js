@@ -8,7 +8,7 @@ const baseRoutes = [
         path: '/',
         component: DashboardLayout,
         redirect: '/hello/world',
-        meta: {requiresAuth: false}
+        meta: {requiresAuth: true}
     },
     {
         path: '/login',
